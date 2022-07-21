@@ -5,12 +5,12 @@ import java.util.ArrayList;
 public class Bank {
     ArrayList<BankAccount> list = new ArrayList<>();
 
-    private int search(String accountNumberIn) {
+    private int search(String accountNumber) {
         for (int i = 0; i <= list.size() - 1; i++) {
             BankAccount tempAccount = list.get(i);
             String tempNumber = tempAccount.getAccountNumber();
 
-            if (tempNumber.equals(accountNumberIn)) {
+            if (tempNumber.equals(accountNumber)) {
                 return i;
             }
         }
@@ -21,8 +21,8 @@ public class Bank {
         return list.size();
     }
 
-    public BankAccount getItem(String accountNumberIn) {
-        int index = search(accountNumberIn);
+    public BankAccount getItem(String accountNumber) {
+        int index = search(accountNumber);
         if (index != -999) {
             return list.get(index);
         } else {
@@ -30,36 +30,36 @@ public class Bank {
         }
     }
 
-    public boolean addAccount(String accountNumberIn, String nameIn) {
-        if (search(accountNumberIn) == -999) {
-            list.add(new BankAccount(accountNumberIn, nameIn));
+    public boolean addAccount(String accountNumber, String name) {
+        if (search(accountNumber) == -999) {
+            list.add(new BankAccount(accountNumber, name));
             return true;
         }
         return false;
     }
 
-    public boolean depositMoney(String accountNumberIn, double amountIn) {
-        BankAccount acc = getItem(accountNumberIn);
+    public boolean depositMoney(String accountNumber, double amount) {
+        BankAccount acc = getItem(accountNumber);
         if (acc != null) {
-            acc.deposit(amountIn);
+            acc.deposit(amount);
             return true;
         } else {
             return false;
         }
     }
 
-    public boolean withdrawMoney(String accountNumberIn, double amountIn) {
-        BankAccount acc = getItem(accountNumberIn);
-        if (acc != null && acc.getBalance() >= amountIn) {
-            acc.withdraw(amountIn);
+    public boolean withdrawMoney(String accountNumber, double amount) {
+        BankAccount acc = getItem(accountNumber);
+        if (acc != null && acc.getBalance() >= amount) {
+            acc.withdraw(amount);
             return true;
         } else {
             return false;
         }
     }
 
-    public boolean removeAccount(String accountNumberIn) {
-        int index = search(accountNumberIn);
+    public boolean removeAccount(String accountNumber) {
+        int index = search(accountNumber);
         if (index != -999) {
             list.remove(index);
             return true;
