@@ -97,14 +97,18 @@ public class BankApplication {
         System.out.print("Enter amount to withdraw: ");
         double amount = EasyScanner.nextDouble();
 
-        boolean ok = bank.withdrawMoney(number, amount);
+        int ok = bank.withdrawMoney(number, amount);
 
-        if (ok) {
-            System.out.println("Withdrawal made");
-        } else {
-            System.out.println("No such account or insufficient funds");
+        switch (ok) {
+            case 1:
+                System.out.println("Withdrawal made");
+                break;
+            case -2:
+                System.out.println("Insufficient funds");
+                break;
+            default:
+                System.out.println("No such account");
         }
-
     }
 
     static void option5(Bank bank) {
