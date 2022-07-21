@@ -48,13 +48,15 @@ public class Bank {
         }
     }
 
-    public boolean withdrawMoney(String accountNumber, double amount) {
+    public int withdrawMoney(String accountNumber, double amount) {
         BankAccount acc = getItem(accountNumber);
-        if (acc != null && acc.getBalance() >= amount) {
-            acc.withdraw(amount);
-            return true;
+        if (acc == null) {
+            return -1;
+        } else if (acc.getBalance() < amount) {
+            return -2;
         } else {
-            return false;
+            acc.withdraw(amount);
+            return 1;
         }
     }
 
