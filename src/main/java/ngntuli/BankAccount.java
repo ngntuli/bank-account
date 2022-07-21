@@ -1,8 +1,8 @@
 package main.java.ngntuli;
 
 public class BankAccount {
-	private String accountNumber;
-	private String accountName;
+	private final String accountNumber;
+	private final String accountName;
 	private double balance;
 
 	public BankAccount(String numberIn, String nameIn) {
