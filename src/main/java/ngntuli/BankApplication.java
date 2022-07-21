@@ -45,14 +45,14 @@ public class BankApplication {
         while (choice != '6');
     }
 
-    static void option1(Bank bankIn) {
+    static void option1(Bank bank) {
         System.out.print("Enter account number: ");
         String number = EasyScanner.nextString();
 
         System.out.print("Enter account name: ");
         String name = EasyScanner.nextString();
 
-        boolean success = bankIn.addAccount(number, name);
+        boolean success = bank.addAccount(number, name);
         if (success) {
             System.out.println("Account added");
         } else {
@@ -61,10 +61,10 @@ public class BankApplication {
 
     }
 
-    static void option2(Bank bankIn) {
+    static void option2(Bank bank) {
         System.out.print("Enter account number: ");
         String number = EasyScanner.nextString();
-        boolean found = bankIn.removeAccount(number);
+        boolean found = bank.removeAccount(number);
 
         if (found) {
             System.out.println("Account removed");
@@ -73,14 +73,14 @@ public class BankApplication {
         }
     }
 
-    static void option3(Bank bankIn) {
+    static void option3(Bank bank) {
         System.out.print("Enter account number: ");
         String number = EasyScanner.nextString();
 
         System.out.print("Enter amount to deposit: ");
         double amount = EasyScanner.nextDouble();
 
-        boolean found = bankIn.depositMoney(number, amount);
+        boolean found = bank.depositMoney(number, amount);
 
         if (found) {
             System.out.println("Money deposited");
@@ -90,14 +90,14 @@ public class BankApplication {
 
     }
 
-    static void option4(Bank bankIn) {
+    static void option4(Bank bank) {
         System.out.print("Enter account number: ");
         String number = EasyScanner.nextString();
 
         System.out.print("Enter amount to withdraw: ");
         double amount = EasyScanner.nextDouble();
 
-        boolean ok = bankIn.withdrawMoney(number, amount);
+        boolean ok = bank.withdrawMoney(number, amount);
 
         if (ok) {
             System.out.println("Withdrawal made");
@@ -107,11 +107,11 @@ public class BankApplication {
 
     }
 
-    static void option5(Bank bankIn) {
+    static void option5(Bank bank) {
         System.out.print("Enter account number ");
         String number = EasyScanner.nextString();
 
-        BankAccount account = bankIn.getItem(number);
+        BankAccount account = bank.getItem(number);
 
         if (account != null) {
             System.out.println("Account number: " + account.getAccountNumber());
